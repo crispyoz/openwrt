@@ -37,6 +37,14 @@
 	};
 };
 
+&gpio {
+  /* prevent auto-numbering GPIOs, retain traditional 0-based GPIOs */
+  /* (needs patch in gpio-mt7621.c to re-introduce the gpio-base property) */
+  gpio-base = <0>;
+};
+
+
+
 &state_default {
 	gpio {
 		groups = "gpio";
@@ -87,6 +95,10 @@
 		groups = "pwm1";
 		function = "gpio";
 	};
+};
+
+&pwm {
+	status = "okay";
 };
 
 &spi0 {
